@@ -1,0 +1,45 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+aniso8601 = "*"
+click = "*"
+itsdangerous = "*"
+pytz = "*"
+six = "*"
+backcall = "*"
+decorator = "*"
+flake8 = "*"
+ipdb = "*"
+ipython = "*"
+jedi = "*"
+marshmallow = "*"
+mccabe = "*"
+parso = "*"
+pexpect = "*"
+pickleshare = "*"
+psycopg2 = "*"
+psycopg2-binary = "*"
+ptyprocess = "*"
+pycodestyle = "*"
+pyflakes = "*"
+traitlets = "*"
+wcwidth = "*"
+Flask = "*"
+Flask-RESTful = "*"
+Jinja2 = "*"
+MarkupSafe = "*"
+Werkzeug = "*"
+Flask-SQLAlchemy = "*"
+ipython_genutils = "*"
+prompt_toolkit = "*"
+Pygments = "*"
+SQLAlchemy = "*"
+SQLAlchemy-Utils = "*"
+
+[requires]
+python_version = "3.7"
