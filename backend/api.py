@@ -1,5 +1,6 @@
 from datetime import datetime
 from flask import Flask, jsonify
+from flask_cors import CORS
 from flask_restful import Resource, Api, reqparse, abort
 
 from flask_sqlalchemy import SQLAlchemy
@@ -8,6 +9,8 @@ from sqlalchemy.exc import IntegrityError
 
 
 app = Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 DB_PARAM = "postgresql+psycopg2://{user}@{url}/{db}".format(user="julianaklulo", url="localhost:5432", db="dsw2")
 app.config["SQLALCHEMY_DATABASE_URI"] = DB_PARAM
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
