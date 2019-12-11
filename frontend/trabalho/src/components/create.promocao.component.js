@@ -80,7 +80,7 @@ export default class CreatePromocao extends Component {
               <h3>Adicionar Nova Promoção</h3>
               <form onSubmit={this.onSubmit}>
                   <div className="form-group">
-                      <label>Login:  </label>
+                      <label>Login (hotel): </label>
                       <input 
                         type="text" 
                         className="form-control" 
@@ -89,7 +89,7 @@ export default class CreatePromocao extends Component {
                         />
                   </div>
                   <div className="form-group">
-                      <label>Senha: </label>
+                      <label>Senha (hotel): </label>
                       <input type="password" 
                         className="form-control"
                         value={this.state.senha}
