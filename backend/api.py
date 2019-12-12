@@ -250,15 +250,11 @@ class ListaPromoçõesCidade(Resource):
         response = []
         for hotel in hoteis:
             promoções = Promocao.query.filter_by(id_hotel=hotel.id).all()
-            if promoções == []:
-                abort(404, message="Não há promoções para essa cidade nestas datas!")
-
             # filtrar promoções pelo range de datas
-
-            di = dados.get("data_inicio")
-            data_inicio = datetime.strptime(di, "%Y-%m-%d")
-            df = dados.get("data_fim")
-            data_fim = datetime.strptime(df, "%Y-%m-%d")
+            data_inicio = dados.get("data_inicio")
+            data_inicio = datetime.strptime(data_inicio, "%Y-%m-%d")
+            data_fim = dados.get("data_fim")
+            data_fim = datetime.strptime(data_fim, "%Y-%m-%d")
             for promoção in promoções:
                 if promoção.data_inicio <= data_inicio <= promoção.data_fim or data_inicio <= promoção.data_inicio <= data_fim:
                     site = Site.query.filter_by(id=promoção.id_site).first()
