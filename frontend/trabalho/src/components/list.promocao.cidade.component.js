@@ -49,10 +49,21 @@ export default class ListPromocaoCidade extends Component {
       .then(response => {
         this.setState({ promocoes: response.data });
       })
+      .then(function (response) {
+        console.log(response);
+      })
       .catch(function (error) {
-        console.log(error);
+        console.log(error.response.data.message);
+        window.alert(error.response.data.message);
       });
-    }
+
+    this.setState({
+      cidade: '',
+      data_inicio: '',
+      data_fim: ''
+    })
+  }
+
     render() {
       return (
         <div sytle={{ marginTop: 10 }}>

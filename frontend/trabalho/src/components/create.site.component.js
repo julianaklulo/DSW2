@@ -62,7 +62,13 @@ export default class CreateSite extends Component {
           senha_site: this.state.senha_site
       };
       axios.post('http://localhost:5000/sites/', obj)
-        .then(res => console.log(res.data));
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error.response.data.message);
+        window.alert(error.response.data.message);
+      });
 
       this.setState({
       login: '',

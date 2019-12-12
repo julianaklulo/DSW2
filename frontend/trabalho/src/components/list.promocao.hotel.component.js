@@ -41,10 +41,20 @@ export default class ListPromocaoHotel extends Component {
       .then(response => {
         this.setState({ promocoes: response.data });
       })
+      .then(function (response) {
+        console.log(response);
+      })
       .catch(function (error) {
-        console.log(error);
+        console.log(error.response.data.message);
+        window.alert(error.response.data.message);
       });
+
+      this.setState({
+        login: '',
+        senha: '',
+      })
     }
+
     render() {
       return (
         <div sytle={{ marginTop: 10 }}>

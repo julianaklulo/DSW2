@@ -62,8 +62,13 @@ export default class CreateHotel extends Component {
           senha_hotel: this.state.senha_hotel
       };
       axios.post('http://localhost:5000/hoteis/', obj)
-        .then(res => console.log(res.data));
-
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error.response.data.message);
+        window.alert(error.response.data.message);
+      });
       this.setState({
       login: '',
       senha: '',

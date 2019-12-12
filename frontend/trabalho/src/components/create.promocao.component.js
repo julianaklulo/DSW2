@@ -62,8 +62,13 @@ export default class CreatePromocao extends Component {
           preco: this.state.preco
       };
       axios.post('http://localhost:5000/promocoes/', obj)
-        .then(res => console.log(res.data));
-
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error.response.data.message);
+        window.alert(error.response.data.message);
+      });
       this.setState({
       login: '',
       senha: '',
