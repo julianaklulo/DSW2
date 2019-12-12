@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
+import Informacoes from './components/informacoes';
 import CreatePromocao from './components/create.promocao.component';
 import CreateSite from './components/create.site.component';
 import CreateHotel from './components/create.hotel.component';
@@ -40,6 +41,7 @@ class App extends Component {
             </div>
           </nav> <br/>
           <Switch>
+            <Route exact path='/' component={ Informacoes } />
             <Route path='/sites' component={ CreateSite } />
             <Route path='/hoteis' component={ CreateHotel } />
             <Route path='/promocoes' component={ CreatePromocao } />
