@@ -233,8 +233,16 @@ class CriaPromoção(Resource):
 
 
 class ListaPromoçõesCidade(Resource):
-    def get(self, cidade, data_inicio, data_fim):
+    parser = reqparse.RequestParser()
+    parser.add_argument("cidade", type=str)
+    parser.add_argument("data_inicio", type=str)
+    parser.add_argument("data_fim", type=str)
+
+    def post(self):
+        dados = self.parser.parse_args(strict=True)
+
         # filtrar por cidade
+        cidade = dados.get("cidade")
         hoteis = Hotel.query.filter_by(cidade=cidade).all()
         if hoteis == []:
             abort(404, message="Não há hotéis cadastrados nessa cidade!")
@@ -246,15 +254,18 @@ class ListaPromoçõesCidade(Resource):
                 abort(404, message="Não há promoções para essa cidade nestas datas!")
 
             # filtrar promoções pelo range de datas
-            data_inicio = datetime.strptime(data_inicio, "%Y-%m-%d")
-            data_fim = datetime.strptime(data_fim, "%Y-%m-%d")
+
+            di = dados.get("data_inicio")
+            data_inicio = datetime.strptime(di, "%Y-%m-%d")
+            df = dados.get("data_fim")
+            data_fim = datetime.strptime(df, "%Y-%m-%d")
             for promoção in promoções:
                 if promoção.data_inicio <= data_inicio <= promoção.data_fim or data_inicio <= promoção.data_inicio <= data_fim:
                     site = Site.query.filter_by(id=promoção.id_site).first()
                     response.append({"id_promocao": promoção.id, "nome_site": site.nome_site, "nome_hotel": hotel.nome_hotel, "preco": promoção.preco, "data_inicio": promoção.data_inicio, "data_fim": promoção.data_fim})
 
         if response == []:
-            abort(404, message="Não há promoções ara essa cidade nestas datas!")
+            abort(404, message="Não há promoções para essa cidade nestas datas!")
         return jsonify(response)
 
 
@@ -319,7 +330,7 @@ class ListaPromoçõesHotel(Resource):
 api.add_resource(CriaSite, '/sites/')
 api.add_resource(CriaHotel, '/hoteis/')
 api.add_resource(CriaPromoção, '/promocoes/')
-api.add_resource(ListaPromoçõesCidade, '/promocoes/<cidade>/<data_inicio>/<data_fim>/')
+api.add_resource(ListaPromoçõesCidade, '/listar_promocoes_cidade/')
 api.add_resource(ListaPromoçõesSite, '/listar_promocoes_site/')
 api.add_resource(ListaPromoçõesHotel, '/listar_promocoes_hotel/')
 
