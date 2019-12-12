@@ -64,6 +64,7 @@ export default class CreateSite extends Component {
       axios.post('http://localhost:5000/sites/', obj)
       .then(function (response) {
         console.log(response);
+        window.alert("Cadastro efetuado com sucesso!");
       })
       .catch(function (error) {
         console.log(error.response.data.message);

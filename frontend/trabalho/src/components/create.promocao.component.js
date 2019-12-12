@@ -64,6 +64,7 @@ export default class CreatePromocao extends Component {
       axios.post('http://localhost:5000/promocoes/', obj)
       .then(function (response) {
         console.log(response);
+        window.alert("A promoção foi criada com sucesso!")
       })
       .catch(function (error) {
         console.log(error.response.data.message);
