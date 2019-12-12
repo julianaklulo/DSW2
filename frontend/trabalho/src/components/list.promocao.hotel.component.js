@@ -58,7 +58,7 @@ export default class ListPromocaoHotel extends Component {
     render() {
       return (
         <div sytle={{ marginTop: 10 }}>
-          <h3 align="center">Promoções</h3>
+          <h3 align="center">Listar Promoções Por Hotel</h3>
           <form onSubmit={this.onSubmit}>
             <div className="form-group">
               <label>Login (hotel): </label>

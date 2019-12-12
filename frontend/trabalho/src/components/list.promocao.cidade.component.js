@@ -67,7 +67,7 @@ export default class ListPromocaoCidade extends Component {
     render() {
       return (
         <div sytle={{ marginTop: 10 }}>
-          <h3 align="center">Promoções</h3>
+          <h3 align="center">Listar Promoções Por Cidade</h3>
           <form onSubmit={this.onSubmit}>
             <div className="form-group">
               <label>Cidade: </label>
