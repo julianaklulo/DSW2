@@ -16,20 +16,7 @@ export default class ListPromocaoSite extends Component {
         promocoes: []
       }
   }
-  componentDidMount(){
-    const obj = {
-      login: this.state.login,
-      senha: this.state.senha
-    };
-    axios.post('http://localhost:5000/listar_promocoes_site/', obj)
-      .then(response => {
-          this.setState({ promocoes: response.data });
-        })
-        .catch(function (error) {
-          console.log(error);
-        })
-    }
-    tabRow(){
+  tabRow(){
       return this.state.promocoes.map(function(object, i){
           return <TableRow obj={object} key={i} />;
       });
